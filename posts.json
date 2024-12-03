@@ -1,40 +1,8 @@
-[
-    {
-        "createdDate": "2024-12-03 01:23:22",
-        "photoPath": "path/to/photo2.jpg",
-        "caption": "Second post caption",
-        "id": "post997924760e314a518afc6e65c4bfbca2id",
-        "authorId": "author7"
-    },
-    {
-        "createdDate": "2024-12-03 01:23:22",
-        "photoPath": "path/to/photo2.jpg",
-        "caption": "Second post caption",
-        "id": "post997924760e314a518afc6e65c4bfbca2id",
-        "authorId": "author7"
-    },
-    {},
-    {"id": "post0f28c00f99db4501991e8dd474037eb0id"},
-    {},
-    {
-        "contentid": "postc003224cdfa848e5abe6b2ca70d08a5eid",
-        "content": {
-            "createdDate": "2024-12-03 01:28:47",
-            "photoPath": "path/to/photo2.jpg",
-            "caption": "Second post caption",
-            "id": "postc003224cdfa848e5abe6b2ca70d08a5eid",
-            "authorId": "author7"
-        }
-    },
-    {},
-    {
-        "contentid": "post2683e3e2c56c424193d171ffc8e51699id",
-        "content": {
-            "caption": "Second post caption",
-            "createdDate": "2024-12-03 01:30:54",
-            "id": "post2683e3e2c56c424193d171ffc8e51699id",
-            "authorId": "author8",
-            "photoPath": "path/to/photo2.jpg"
-        }
-    }
-]
+[{
+    "contentId": "sdad",
+    "caption": "sdadsd",
+    "photo": "sdsadsa",
+    "id": "P0",
+    "authorId": "sads",
+    "timestamp": "2024-12-03T16:02:45.587204800"
+}]

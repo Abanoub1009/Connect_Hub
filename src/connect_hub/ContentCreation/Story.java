@@ -1,13 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package connect_hub.ContentCreation;
 
-
+import java.time.Duration;
 import java.time.LocalDateTime;
 
-public class Post implements Content {
+public class Story implements Content {
+
     private String contentId;
     private String authorId;
     private String caption;
@@ -15,7 +13,7 @@ public class Post implements Content {
     private LocalDateTime timestamp;
 
     // Constructor
-    public Post(String contentId, String authorId, String caption, String photo) {
+    public Story(String contentId, String authorId, String caption, String photo) {
 
         this.contentId = contentId;
         this.authorId = authorId;
@@ -23,8 +21,6 @@ public class Post implements Content {
         this.photo = photo;
         this.timestamp = LocalDateTime.now();
     }
-
-
 
     // Getters
     @Override
@@ -54,7 +50,10 @@ public class Post implements Content {
 
     @Override
     public boolean isExpired() {
-        return false;  // Posts never expire
+        // Expire after 24 hours
+        return Duration.between(timestamp, LocalDateTime.now()).toHours() >= 24;
     }
+
+
 }
 

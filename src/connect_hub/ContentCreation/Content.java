@@ -1,13 +1,14 @@
 
 package connect_hub.ContentCreation;
 
+import java.time.LocalDateTime;
+
 
 public interface Content {
-    String getId();        // Unique ID of the content
-    String getCreatedDate(); // Creation date of the content
-    String getCaption(); 
-    String getPhotoPath();
+    String getContentId();
     String getAuthorId();
-    void setCaption(String caption);
-    void setPhotoPath(String photoPath);
+    String getCaption();
+    String getPhoto();
+    LocalDateTime getTimestamp();
+    boolean isExpired();
 }
