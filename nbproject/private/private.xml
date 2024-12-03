@@ -3,18 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentRepository.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/Content.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/Post.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/FileManager.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentManager.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentFactory.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/ReadUsers.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/Connect_Hub.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/PutUsers.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/Main.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/Story.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/UserDetails.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/HomeScreen.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/LoginFrame.java</file>
         </group>
     </open-files>
 </project-private>
