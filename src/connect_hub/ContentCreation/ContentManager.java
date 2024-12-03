@@ -13,6 +13,7 @@ public class ContentManager {
     public void createPost(String contentId, String authorId, String caption, String photo) {
         Content post = ContentFactory.createContent("post", contentId, authorId, caption, photo);
         List<Content> contents = contentRepository.loadContents();
+        contentRepository.earaseTheFileAfterLoad("post");
         contents.add(post);
         contentRepository.savePosts(contents);
     }

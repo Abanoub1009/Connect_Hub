@@ -8,7 +8,7 @@ package connect_hub.ContentCreation;
 import java.time.LocalDateTime;
 
 public class Post implements Content {
-    private String contentId;
+    private String id;
     private String authorId;
     private String caption;
     private String photo;
@@ -17,7 +17,7 @@ public class Post implements Content {
     // Constructor
     public Post(String contentId, String authorId, String caption, String photo) {
 
-        this.contentId = contentId;
+        this.id = contentId;
         this.authorId = authorId;
         this.caption = caption;
         this.photo = photo;
@@ -28,8 +28,8 @@ public class Post implements Content {
 
     // Getters
     @Override
-    public String getContentId() {
-        return contentId;
+    public String getid() {
+        return id;
     }
 
     @Override

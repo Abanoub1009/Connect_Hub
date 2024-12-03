@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class Story implements Content {
 
-    private String contentId;
+    private String id;
     private String authorId;
     private String caption;
     private String photo;
@@ -15,7 +15,7 @@ public class Story implements Content {
     // Constructor
     public Story(String contentId, String authorId, String caption, String photo) {
 
-        this.contentId = contentId;
+        this.id = contentId;
         this.authorId = authorId;
         this.caption = caption;
         this.photo = photo;
@@ -24,8 +24,8 @@ public class Story implements Content {
 
     // Getters
     @Override
-    public String getContentId() {
-        return contentId;
+    public String getid() {
+        return id;
     }
 
     @Override

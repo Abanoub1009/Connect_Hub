@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 
 public interface Content {
-    String getContentId();
+    String getid();
     String getAuthorId();
     String getCaption();
     String getPhoto();

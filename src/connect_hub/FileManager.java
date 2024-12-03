@@ -66,13 +66,11 @@ public class FileManager<T> {
                 nextId = Integer.parseInt(lastId.substring(1)) + 1;
             }
         } catch (FileNotFoundException e) {
-            System.out.println("No existing file. A new file will be created.");
         }
 
         // Create a JSON object for the new entry
         JSONObject jsonObject = new JSONObject();
         String newId = idPrefix + nextId;  // Generate new ID
-        jsonObject.put("id", newId);
 
         // Handle different object types with appropriate reflection
         if (object instanceof Post) {
@@ -84,12 +82,17 @@ public class FileManager<T> {
                 field.setAccessible(true);
                 try {
                     Object value = field.get(post);
-                    jsonObject.put(field.getName(), value);
+                    if (field.getName() == "id") {
+                        jsonObject.put(field.getName(), newId);
+                    } else {
+                        jsonObject.put(field.getName(), value);
+                    }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
             }
         } else if (object instanceof UserDetails) {
+            jsonObject.put("id", newId);
             UserDetails userDetails = (UserDetails) object;
 
             // Use reflection to get all fields and their values dynamically for UserDetails
@@ -114,4 +117,8 @@ public class FileManager<T> {
         }
     }
 
+    public void deleteJsonFile() {
+        File file = new File(filePath);
+        file.delete();
+    }
 }

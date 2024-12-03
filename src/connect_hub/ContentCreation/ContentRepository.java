@@ -22,12 +22,15 @@ public class ContentRepository {
         JSONArray jsonArray = FileManager.loadFromFile(filePath);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
-            String type = jsonObject.getString("type");
-            String contentId = jsonObject.getString("contentId");
+            String contentId = jsonObject.getString("id");
             String authorId = jsonObject.getString("authorId");
             String caption = jsonObject.getString("caption");
             String photo = jsonObject.getString("photo");
-            
+            String type = "";
+            if(contentId.startsWith("P"))
+                type = "post";
+            else 
+                type = "story";
             // Create Post or Story based on type
             Content content = ContentFactory.createContent(type, contentId, authorId, caption, photo);
             contents.add(content);
@@ -61,5 +64,12 @@ public class ContentRepository {
             e.printStackTrace();
         }
     }
+    public void earaseTheFileAfterLoad(String type)
+    {
+        if(type == "post")
+            postManager.deleteJsonFile();
+        else if (type == "story")
+            storyManager.deleteJsonFile();
     }
+}
     
