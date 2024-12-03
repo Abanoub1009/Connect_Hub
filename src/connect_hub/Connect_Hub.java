@@ -5,6 +5,7 @@
 package connect_hub;
 
 import connect_hub.ContentCreation.*;
+import connect_hub.UserManagement.*;
 
 /**
  *
@@ -16,10 +17,9 @@ public class Connect_Hub {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ContentManager c = new ContentManager("posts.json");
-        c.createPost("sdad", "sads", "sdadsd", "sdsadsa");
+//        ContentManager c = new ContentManager("posts.json");
+//        c.createPost("sdad", "sads", "sdadsd", "sdsadsa");
+
+        HomeScreen.getInstance().setVisible(true);
     }
 }
-
-    
-    

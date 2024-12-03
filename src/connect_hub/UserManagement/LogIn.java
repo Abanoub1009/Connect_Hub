@@ -1,5 +1,4 @@
 package connect_hub.UserManagement;
-import connect_hub.UserManagement.UserDetails;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,7 +7,7 @@ import org.json.JSONObject;
 
 
 public class LogIn extends UserDetails {
-    
+
     public LogIn(String email, String password) throws IOException {
         super(null, email, null, password, null, "online");
     }
@@ -26,7 +25,7 @@ public class LogIn extends UserDetails {
                 String enteredPassHash = hashPassword(password);
 
                 if (enteredPassHash.equals(storedHashedPass)) {
-                    userJson.put("status", "Online");  // Update the status  to "Online"
+                    userJson.put("status", "Online");  
                     userFound = true;
                     break;
                 } else {

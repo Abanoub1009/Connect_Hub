@@ -3,8 +3,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 
 
 public class LoginFrame extends javax.swing.JFrame {
@@ -46,6 +45,10 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 204, 255));
         jLabel2.setText("Password:");
 
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
+
         jInternalFrame1.setVisible(true);
 
         jLabel3.setFont(new java.awt.Font("Andalus", 3, 24)); // NOI18N
@@ -70,6 +73,8 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Log In");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,6 +156,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
 
         } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "An error occurred while logging in. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 

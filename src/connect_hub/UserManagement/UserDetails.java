@@ -19,7 +19,7 @@ public class UserDetails {
         this.userName = userName;
         setPassword(password);
         this.dateOfBirth = dateOfBirth;
-        this.status = "offline";
+        this.status = "Offline";
     }
      
     public UserDetails(){

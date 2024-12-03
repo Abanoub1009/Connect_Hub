@@ -11,4 +11,3 @@ public class ReadUsers {
         return FileManager.loadFromFile(filePath);
     }
 }
-
