@@ -1,0 +1,75 @@
+[
+   {
+      "password": "0c8d4190f389b599a0c0625c52602eb9fb4b7a1e769f07ac1f553caaf34b19cb",
+      "Friends": [],
+      "Posts": [],
+      "Bio": "How are you",
+      "userName": "user1",
+      "ProfilePhoto": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45.jpg",
+      "userId": "1",
+      "email": "NSDSJDSKJ",
+      "CoverPhoto": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45 (2).jpg"
+   },
+   {
+      "password": "2b218a3de6e9c348c3c482caee9ed793b7963c54d3bbe757a8b1ba7f64cdde0a",
+      "Friends": [
+         {
+            "FriendUserName": "user1",
+            "status": "online"
+         },
+         {
+            "FriendUserName": "user5",
+            "status": "online"
+         }
+      ],
+      "Posts": [
+         {
+            "Content": "This is a post",
+            "Image": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45.jpg",
+            "Timestamp": "2024-12-03 17:17:39"
+         },
+         {
+            "Content": "Very good",
+            "Image": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45.jpg",
+            "Timestamp": "2024-12-03 17:17:39"
+         }
+      ],
+      "Bio": "Hi",
+      "userName": "user2",
+      "ProfilePhoto": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45.jpg",
+      "userId": "2",
+      "email": "NSDSJDSKJ",
+      "CoverPhoto": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45 (2).jpg"
+   },
+   {
+      "password": "1a5376ad727d65213a79f3108541cf95012969a0d3064f108b5dd6e7f8c19b89",
+      "Friends": [
+         {
+            "FriendUserName": "user1",
+            "status": "online"
+         },
+         {
+            "FriendUserName": "user5",
+            "status": "online"
+         }
+      ],
+      "Posts": [
+         {
+            "Content": "This is a post",
+            "Image": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45.jpg",
+            "Timestamp": "2024-12-03 17:17:39"
+         },
+         {
+            "Content": "Very good",
+            "Image": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45.jpg",
+            "Timestamp": "2024-12-03 17:17:39"
+         }
+      ],
+      "Bio": "Bye",
+      "userName": "user3",
+      "ProfilePhoto": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45.jpg",
+      "userId": "3",
+      "email": "user2@gmail.com",
+      "CoverPhoto": "C:\\Users\\HP\\Desktop\\photo_2024-12-03_01-54-45 (2).jpg"
+   }
+]
