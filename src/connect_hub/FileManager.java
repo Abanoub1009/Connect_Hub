@@ -1,95 +1,124 @@
-
 package connect_hub;
 
-import java.util.*;
+import connect_hub.ContentCreation.*;
+import connect_hub.UserManagement.*;
 import java.io.*;
-import java.nio.file.*;
+import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class FileManager<T> {
-    private String filePath;
-    private Map<String , T> dataMap;
 
-    public FileManager(String filePath) {
+    private final String filePath;
+    private final String idPrefix;
+
+    public FileManager(String filePath, String idPrefix) {
         this.filePath = filePath;
-        this.dataMap = new HashMap<>();
-        loadFromFile();
+        this.idPrefix = idPrefix;
     }
 
-    private void loadFromFile() {
-        try
-        {
-            File file = new File(filePath);
-            if (!file.exists())
-            {
-                Files.write(Paths.get(filePath), "[]".getBytes());
-            }
-            String content = new String(Files.readAllBytes(Paths.get(filePath)));
-            JSONArray jasonArray = new JSONArray(content);
-            for (int i = 0; i < jasonArray.length(); i++)
-            {
-                JSONObject jsonObject = jasonArray.getJSONObject(i);
-                String key = jsonObject.getString("id");
-                @SuppressWarnings("unchecked")
-                T value = (T) jsonObject.toMap();
-                dataMap.put(key, value);
+    public static JSONArray loadFromFile(String filePath) {
+        JSONArray Array = new JSONArray();
+        File file = new File(filePath);
+
+        if (!file.exists()) {
+            try {
+                file.createNewFile();  // Create the file if it doesn't exist
+            } catch (IOException e) {
+                Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, "Error creating file", e);
             }
         }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
-    private void saveToFile() 
-    {
-        try
-        {
-            FileWriter writer = new FileWriter(filePath);
-            JSONArray jsonArray = new JSONArray();
-            for (Map.Entry<String, T> entry: dataMap.entrySet())
-            {
-                JSONObject jsonObject = new JSONObject((Map<?,?>) entry.getValue());
-                jsonObject.put(entry.getKey(), entry.getKey());
-                jsonArray.put(jsonObject);
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder jsonData = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                jsonData.append(line);
             }
-            writer.write(jsonArray.toString(4));
+
+            if (!jsonData.isEmpty()) {
+                Array = new JSONArray(jsonData.toString());
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(IOException e)
-        {
-            e.printStackTrace();
+        return Array;
+    }
+
+    public void writeToJson(T object) throws IOException {
+        JSONArray jsonArray = new JSONArray();
+        int nextId = 0;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            StringBuilder jsonData = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                jsonData.append(line);
+            }
+
+            if (!jsonData.isEmpty()) {
+                jsonArray = new JSONArray(jsonData.toString());
+
+                // Extract last ID and calculate next ID
+                String lastId = jsonArray.getJSONObject(jsonArray.length() - 1).getString("id");
+                nextId = Integer.parseInt(lastId.substring(1)) + 1;
+            }
+        } catch (FileNotFoundException e) {
+        }
+
+        // Create a JSON object for the new entry
+        JSONObject jsonObject = new JSONObject();
+        String newId = idPrefix + nextId;  // Generate new ID
+
+        // Handle different object types with appropriate reflection
+        if (object instanceof Post) {
+            Post post = (Post) object;
+
+            // Use reflection to get all fields and their values dynamically for Post
+            Field[] fields = Post.class.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                try {
+                    Object value = field.get(post);
+                    if (field.getName() == "id") {
+                        jsonObject.put(field.getName(), newId);
+                    } else {
+                        jsonObject.put(field.getName(), value);
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (object instanceof UserDetails) {
+            jsonObject.put("id", newId);
+            UserDetails userDetails = (UserDetails) object;
+
+            // Use reflection to get all fields and their values dynamically for UserDetails
+            Field[] fields = UserDetails.class.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                try {
+                    Object value = field.get(userDetails);
+                    jsonObject.put(field.getName(), value);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        // Add the new object to the JSON array
+        jsonArray.put(jsonObject);
+
+        // Write the updated array back to the file
+        try (FileWriter file = new FileWriter(filePath)) {
+            file.write(jsonArray.toString(4));  // Pretty print with indentation
         }
     }
-    private Map<String, T> getDataMap()
-    {
-        return dataMap;
-    }
-    private void addOrUpdate(String id, T value)
-    {
-        dataMap.put(id, value);
-        saveToFile();
-    }
-    private void remove(String id)
-    {
-        dataMap.remove(id);
-        saveToFile();
-    }
-    private T getById(String id)
-    {
-        return dataMap.get(id);
-    }
-    private String getKeyFieldName()
-    {
-        if(filePath.contains("users")){
-            return "userId";
-        }else if(filePath.contains("posts") || filePath.contains("stories")){
-            return "contentId";
-        }
-        return "id";
-    }
-    private String getIdField(JSONObject jsonObject)
-    {
-        String keyName = getKeyFieldName();
-        return jsonObject.optString(keyName, null);
+
+    public void deleteJsonFile() {
+        File file = new File(filePath);
+        file.delete();
     }
 }

@@ -4,6 +4,8 @@
  */
 package connect_hub;
 
+import connect_hub.ContentCreation.*;
+
 /**
  *
  * @author bibos_bz87qw5
@@ -14,7 +16,10 @@ public class Connect_Hub {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ContentManager c = new ContentManager("posts.json");
+        c.createPost("sdad", "sads", "sdadsd", "sdsadsa");
     }
-    
 }
+
+    
+    
