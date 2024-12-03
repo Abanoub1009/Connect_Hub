@@ -233,6 +233,7 @@ public class SignUpJFrame extends javax.swing.JFrame {
             jPasswordField1.setText("");
             jFormattedTextField1.setText("");
         } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "An error occurred while signing up. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(SignUpJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 

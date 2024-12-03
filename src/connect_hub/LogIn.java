@@ -25,7 +25,7 @@ public class LogIn extends UserDetails {
                 String enteredPassHash = hashPassword(password);
 
                 if (enteredPassHash.equals(storedHashedPass)) {
-                    userJson.put("status", "Online");  // Update the status  to "Online"
+                    userJson.put("status", "Online");  
                     userFound = true;
                     break;
                 } else {

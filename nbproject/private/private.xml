@@ -4,17 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/users.json</file>
+            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/LogoutFrame.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/LogIn.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/LoginFrame.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/README.md</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/JFrame1.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/UserDetails.java</file>
+            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/LogOut.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/PutUsers.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/Main.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ReadUsers.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/Connect_Hub.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/SignUp.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/SignUpJFrame.java</file>
         </group>
     </open-files>
 </project-private>

@@ -3,8 +3,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
 
 
 public class LoginFrame extends javax.swing.JFrame {
@@ -157,6 +156,7 @@ public class LoginFrame extends javax.swing.JFrame {
             }
 
         } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "An error occurred while logging in. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(LoginFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
 
