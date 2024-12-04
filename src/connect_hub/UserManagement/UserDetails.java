@@ -1,5 +1,6 @@
 package connect_hub.UserManagement;
 import connect_hub.ContentCreation.Post;
+import connect_hub.
 import java.security.MessageDigest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,6 +21,10 @@ public class UserDetails {
     private String coverPhoto;
     private ArrayList<Friends> friends;
     private ArrayList<Post> posts;
+     private ArrayList<UserDetails> blockedUsers;
+    private ArrayList<UserDetails> pendingRequests;
+    private ArrayList<UserDetails> friendsofFriends;
+    
 
      public UserDetails(String userId, String email, String userName, String password, String dateOfBirth, String status) {
         this.userId = userId;
@@ -31,6 +36,9 @@ public class UserDetails {
         this.bio = "";
         this.profilePhoto = "";
         this.coverPhoto = "";
+        this.pendingRequests = new ArrayList <>();
+        this.blockedUsers = new ArrayList<>();
+        this.friendsofFriends= new ArrayList<>();
         this.friends = (friends == null) ? new ArrayList<>() : friends;
         this.posts = (posts == null) ? new ArrayList<>() : posts;
     }
@@ -106,8 +114,20 @@ public class UserDetails {
         return userName;
     }
 
-    // lesa nshof hn3ml track lw el user momkn y8ayr esmo aw y check fi esm zayo wla
-    // la (lsa msh 3arfa)
+    public ArrayList<UserDetails> getBlockedUsers() {
+        return blockedUsers;
+    }
+
+    public ArrayList<UserDetails> getPendingRequests() {
+        return pendingRequests;
+    }
+
+    public ArrayList<UserDetails> getFriendsofFriends() {
+        return friendsofFriends;
+    }
+
+    
+   
     public void setUsername(String userName) {
         this.userName = userName;
     }
@@ -164,6 +184,43 @@ public class UserDetails {
     public String getStoredPassword() {
         return storePassword;  
     }
+    
+     public void sendFriendRequest (UserDetails user)
+    { if (!this.friends.contains(user)&& !this.blockedUsers.contains(user)&& !this.pendingRequests.contains(user))
+    {     this.pendingRequests.add(user);
+        } }
+   
+    public void acceptFriendRequest (UserDetails user)
+    { 
+        if(this.pendingRequests.contains(user))
+        {   this.pendingRequests.remove(user);
+            this.friends.add(user);
+        } } 
+public void removeFriend (friends friend)
+{ if (this.friends.contains(friend))
+{   this.friends.remove(friend);
+    } }
+public void declineFriendRequest (UserDetails user)
+{ if(this.pendingRequests.contains(user))
+{  this.pendingRequests.remove(user);
+    }
+} 
+public void blockUser(friends user) {
+        if (this.friends.contains(user)) {
+            removeFriend(user);
+        }
+        this.blockedUsers.add(user);
+    }
+
+    public void unblockUser(UserDetails user) {
+        this.blockedUsers.remove(user);
+    } 
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
 
     public String hashPassword(String password) {
         try {
@@ -179,6 +236,7 @@ public class UserDetails {
             throw new RuntimeException("Error hashing password.", e);
         }
     }
+
     public boolean isValidDateOfBirth(String dateOfBirth) {
     try {
        
