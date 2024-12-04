@@ -78,11 +78,11 @@ public class UserDetails {
         this.coverPhoto = coverPhoto;
     }
 
-    public ArrayList<Friends> getFriends() {
+    public ArrayList<UserDetails> getFriends() {
         return friends;
     }
 
-    public void setFriends(ArrayList<Friends> friends) {
+    public void setFriends(ArrayList<UserDetails> friends) {
         this.friends = friends;
     }
 
