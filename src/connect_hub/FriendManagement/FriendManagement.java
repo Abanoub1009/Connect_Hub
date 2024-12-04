@@ -4,7 +4,6 @@
  */
 package connect_hub.FriendManagement;
 
-import FriendManagement.*;
 import connect_hub.UserManagement.UserDetails;
 import java.util.HashSet;
 import java.util.Set;
