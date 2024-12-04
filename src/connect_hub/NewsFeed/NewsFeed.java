@@ -22,6 +22,7 @@ import java.time.LocalDateTime;
  * @author Karen Amgad
  */
 public class NewsFeed {
+
     private FriendManagement friendManagement;
     private ContentRepository contentRepository;
 
@@ -29,64 +30,78 @@ public class NewsFeed {
         this.friendManagement = friendManagement;
         this.contentRepository = new ContentRepository(contentFilePath);
     }
-  
-    
-    public Set<Object> ShowSuggestions (UserDetails currentUser)
-    { return friendManagement.Suggestions(currentUser); }
-   
+
+    public Set<UserDetails> ShowSuggestions(UserDetails currentUser) {
+        return friendManagement.Suggestions(currentUser);
+    }
+
     //This Class is for displaying the Status of the Friends in the User's Friend List
-    
-    
     public void displayFriendStatuses(UserDetails currentUser) {
         for (UserDetails friend : currentUser.getFriends()) {
             System.out.println(friend.getUserName() + " is " + friend.getStatus());
         }
     }
-    
-    
+
     public List<Post> getPosts(UserDetails currentUser) {
         List<Content> allContent = contentRepository.loadContents();
         List<Post> posts = new ArrayList<>();
-    
+
         for (Content content : allContent) {
             if (content instanceof Post) {
                 Post post = (Post) content;
-                //problems here
-                if (currentUser.getFriends().contains(new UserDetails(post.getAuthorId())) || post.getAuthorId().equals(currentUser.getId())) {
+                UserDetails u = new UserDetails();
+                for (UserDetails user: currentUser.getFriends())
+                {
+                    if(user.getUserId().equals(post.getAuthorId()))
+                    {
+                        u = user;
+                        break;
+                    }
+                }
+                if (currentUser.getFriends().contains(u) || post.getAuthorId().equals(currentUser.getUserId())) {
                     posts.add(post);
                 }
             }
         }
-    
+
         posts.sort(Comparator.comparing(Post::getTimestamp).reversed());
         return posts;
     }
-    
+
     public List<Story> getStories(UserDetails currentUser) {
         List<Content> allContent = contentRepository.loadContents();
         List<Story> stories = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
-    
+
         for (Content content : allContent) {
             if (content instanceof Story) {
                 Story story = (Story) content;
-                if ((currentUser.getFriends().contains(new UserDetails(story.getAuthorId())) || story.getAuthorId().equals(currentUser.getId())) && !story.isExpired()) {
+                UserDetails u = new UserDetails();
+                for (UserDetails user: currentUser.getFriends())
+                {
+                    if(user.getUserId().equals(story.getAuthorId()))
+                    {
+                        u = user;
+                        break;
+                    }
+                }
+                if ((currentUser.getFriends().contains(u) || story.getAuthorId().equals(currentUser.getUserId())) && !story.isExpired()) {
                     stories.add(story);
                 }
             }
         }
-    
+
         stories.sort(Comparator.comparing(Story::getTimestamp).reversed());
         return stories;
     }
-    
+
     public void displayNewsFeed(UserDetails currentUser) {
         System.out.println("Stories:");
         List<Story> stories = getStories(currentUser);
         for (Story story : stories) {
             System.out.println(story.getAuthorId() + " posted a story: " + story.getCaption());
         }
-        
+
         System.out.println("\nPosts:");
         List<Post> posts = getPosts(currentUser);
         for (Post post : posts) {
