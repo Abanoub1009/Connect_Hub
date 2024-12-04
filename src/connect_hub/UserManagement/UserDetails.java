@@ -1,5 +1,6 @@
 package connect_hub.UserManagement;
-import connect_hub.ContentCreation.Post;
+
+import connect_hub.ProfileManagment.*;
 import java.security.MessageDigest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -7,11 +8,12 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 
 public class UserDetails {
+
     private String userId;
     private String email;
     private String userName;
     private String password;
-    private String storePassword; 
+    private String storePassword;
     private String dateOfBirth;
     private String status;
     private String bio;
@@ -19,9 +21,9 @@ public class UserDetails {
     private String Email;
     private String coverPhoto;
     private ArrayList<Friends> friends;
-    private ArrayList<Post> posts;
+    private ArrayList<Posts> posts;
 
-     public UserDetails(String userId, String email, String userName, String password, String dateOfBirth, String status) {
+    public UserDetails(String userId, String email, String userName, String password, String dateOfBirth, String status, String bio, String profilePhoto, String coverPhoto, ArrayList<Friends> friends, ArrayList<Posts> posts) {
         this.userId = userId;
         this.email = email;
         this.userName = userName;
@@ -33,6 +35,10 @@ public class UserDetails {
         this.coverPhoto = "";
         this.friends = (friends == null) ? new ArrayList<>() : friends;
         this.posts = (posts == null) ? new ArrayList<>() : posts;
+    }
+
+    public UserDetails() {
+
     }
 
     public String getBio() {
@@ -67,16 +73,12 @@ public class UserDetails {
         this.friends = friends;
     }
 
-    public ArrayList<Post> getPosts() {
+    public ArrayList<Posts> getPosts() {
         return posts;
     }
 
-    public void setPosts(ArrayList<Post> posts) {
+    public void setPosts(ArrayList<Posts> posts) {
         this.posts = posts;
-    }
-     
-    public UserDetails(){
-        
     }
 
     public String getUserId() {
@@ -117,19 +119,18 @@ public class UserDetails {
     }
 
     public void setDateOfBirth(String dateOfBirth) {
-    if (isValidDateOfBirth(dateOfBirth)) {
-        this.dateOfBirth = dateOfBirth;
-    } else {
-        throw new IllegalArgumentException("Invalid date format or logical date. Use DD-MM-YYYY.");
+        if (isValidDateOfBirth(dateOfBirth)) {
+            this.dateOfBirth = dateOfBirth;
+        } else {
+            throw new IllegalArgumentException("Invalid date format or logical date. Use DD-MM-YYYY.");
+        }
     }
-    }
-
 
     public String getStatus() {
         return status;
     }
 
-   public boolean isValidEmail(String email) {
+    public boolean isValidEmail(String email) {
         return email != null && email.matches("^[a-zA-Z0-9_.-]+@[a-zA-Z0-9.-]+$");
     }
 
@@ -143,12 +144,12 @@ public class UserDetails {
     // This method should be used for checking the plain password length before hashing
     public boolean checkPassLength(String password) {
         if (password == null || password.length() < 8) {
-            return false;  
+            return false;
         }
-        return true;  
+        return true;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
@@ -157,12 +158,12 @@ public class UserDetails {
         if (password == null || password.length() < 8) {
             throw new IllegalArgumentException("Password must be longer than 7 digits");
         }
-        this.storePassword = password;  
-        this.password = hashPassword(password);  
+        this.storePassword = password;
+        this.password = hashPassword(password);
     }
 
     public String getStoredPassword() {
-        return storePassword;  
+        return storePassword;
     }
 
     public String hashPassword(String password) {
@@ -179,15 +180,20 @@ public class UserDetails {
             throw new RuntimeException("Error hashing password.", e);
         }
     }
+
     public boolean isValidDateOfBirth(String dateOfBirth) {
-    try {
-       
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
-        LocalDate parsedDate = LocalDate.parse(dateOfBirth, formatter);
-        return true;
+        try {
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
+            LocalDate parsedDate = LocalDate.parse(dateOfBirth, formatter);
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
     }
-    catch (DateTimeParseException e) {
-        return false;
+
+    public void setStatus(String status) {
+        this.status = status;
     }
-}
+
 }

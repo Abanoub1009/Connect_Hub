@@ -2,30 +2,33 @@ package connect_hub.UserManagement;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 
 public class LogIn extends UserDetails {
 
+        private PutUsers putUsers = new PutUsers();
+
     public LogIn(String email, String password) throws IOException {
-        super(null, email, null, password, null, "online");
+        super(null, email, null, password, null, "online",null,null,null,null,null);
     }
 
     public String checkLoginCredentials(String email, String password) throws IOException {
-        JSONArray usersArray = ReadUsers.readUsersFromFile("users.json");
+        ArrayList<UserDetails> usersArray = ReadUsers.readUsersFromFile("users.json");
         boolean userFound = false;
 
-        for (int i = 0; i < usersArray.length(); i++) {
-            JSONObject userJson = usersArray.getJSONObject(i);
-            String storedEmail = userJson.getString("email");
-            String storedHashedPass = userJson.getString("password");
+        for (int i = 0; i < usersArray.size(); i++) {
+            UserDetails user = usersArray.get(i);
+            String storedEmail = user.getEmail();
+            String storedHashedPass = user.getPassword();
 
             if (email.equals(storedEmail)) {
                 String enteredPassHash = hashPassword(password);
 
                 if (enteredPassHash.equals(storedHashedPass)) {
-                    userJson.put("status", "Online");  
+                   user.setStatus("Online");
                     userFound = true;
                     break;
                 } else {
@@ -35,7 +38,7 @@ public class LogIn extends UserDetails {
         }
 
         if (userFound) {
-            saveUsersToFile(usersArray);
+           putUsers.writeUserToJson(this);
             return "success";
         } else {
             return "invalidEmail";

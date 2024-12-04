@@ -22,5 +22,70 @@
         "userName": "ZZZZ",
         "email": "ZZZ@gmail.com",
         "status": "Offline"
+    },
+    {
+        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "2-2-2003",
+        "id": "U3",
+        "userName": "SheroukWaheed",
+        "posts": [],
+        "email": "sherouk@gmail.com",
+        "friends": [],
+        "status": "Offline"
+    },
+    {
+        "password": "dc2073d977f7258e145bedba955595589ac09fe85f274cf52cb2b78f5b508ba0",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "9-10-2004",
+        "id": "U4",
+        "userName": "sama",
+        "posts": [],
+        "email": "sama@gmail.com",
+        "friends": [],
+        "status": "Offline"
+    },
+    {
+        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "10-9-2024",
+        "id": "U5",
+        "userName": "sky",
+        "posts": [],
+        "email": "sky@gmail.com",
+        "friends": [],
+        "status": "Offline"
+    },
+    {
+        "password": "0386a2dc381ab76fa2d1eb57dc9ea3b745cedcad083e165910edea8aff45ed1d",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "2-2-2002",
+        "id": "U6",
+        "userName": "shrexsky",
+        "posts": [],
+        "email": "shrex@gmail.com",
+        "friends": [],
+        "status": "Offline"
+    },
+    {
+        "password": "332d1ea7aff29aee36646c3c7292ab5f3c42c3b9aa1f0ea25b312a5c6b4ad808",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "1-1-2002",
+        "id": "U7",
+        "userName": "12121212",
+        "posts": [],
+        "email": "sher@gmail.com",
+        "friends": [],
+        "status": "Offline"
     }
 ]
