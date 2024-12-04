@@ -12,7 +12,7 @@ public class ContentManager {
 
     public void createPost(String contentId, String authorId, String caption, String photo) {
         Content post = ContentFactory.createContent("post", contentId, authorId, caption, photo);
-        List<Content> contents = contentRepository.loadContents();
+        ArrayList<Content> contents = contentRepository.loadContents();
         contentRepository.earaseTheFileAfterLoad("post");
         contents.add(post);
         contentRepository.savePosts(contents);
@@ -20,14 +20,14 @@ public class ContentManager {
 
     public void createStory(String contentId, String authorId, String caption, String photo) {
         Content story = ContentFactory.createContent("story", contentId, authorId, caption, photo);
-        List<Content> contents = contentRepository.loadContents();
+        ArrayList<Content> contents = contentRepository.loadContents();
         contents.add(story);
         contentRepository.saveStories(contents);
     }
 
     public void deleteExpiredStories() {
-        List<Content> contents = contentRepository.loadContents();
-        List<Content> expiredStories = new ArrayList<>();
+        ArrayList<Content> contents = contentRepository.loadContents();
+        ArrayList<Content> expiredStories = new ArrayList<>();
         
         for (Content content : contents) {
             if (content instanceof Story && content.isExpired()) {

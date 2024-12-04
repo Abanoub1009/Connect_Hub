@@ -1,8 +1,10 @@
 package connect_hub.UserManagement;
+import connect_hub.ContentCreation.Post;
 import java.security.MessageDigest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 public class UserDetails {
     private String userId;
@@ -12,6 +14,12 @@ public class UserDetails {
     private String storePassword; 
     private String dateOfBirth;
     private String status;
+    private String bio;
+    private String profilePhoto;
+    private String Email;
+    private String coverPhoto;
+    private ArrayList<Friends> friends;
+    private ArrayList<Post> posts;
 
      public UserDetails(String userId, String email, String userName, String password, String dateOfBirth, String status) {
         this.userId = userId;
@@ -20,6 +28,51 @@ public class UserDetails {
         setPassword(password);
         this.dateOfBirth = dateOfBirth;
         this.status = "Offline";
+        this.bio = "";
+        this.profilePhoto = "";
+        this.coverPhoto = "";
+        this.friends = (friends == null) ? new ArrayList<>() : friends;
+        this.posts = (posts == null) ? new ArrayList<>() : posts;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getProfilePhoto() {
+        return profilePhoto;
+    }
+
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
+    public String getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+
+    public ArrayList<Friends> getFriends() {
+        return friends;
+    }
+
+    public void setFriends(ArrayList<Friends> friends) {
+        this.friends = friends;
+    }
+
+    public ArrayList<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(ArrayList<Post> posts) {
+        this.posts = posts;
     }
      
     public UserDetails(){

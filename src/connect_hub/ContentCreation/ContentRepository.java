@@ -17,8 +17,8 @@ public class ContentRepository {
     }
 
     // Load content from a JSON file
-    public List<Content> loadContents() {
-        List<Content> contents = new ArrayList<>();
+    public ArrayList<Content> loadContents() {
+        ArrayList<Content> contents = new ArrayList<>();
         JSONArray jsonArray = FileManager.loadFromFile(filePath);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -39,7 +39,7 @@ public class ContentRepository {
     }
 
     // Save content to the JSON file
-    public void savePosts(List<Content> posts) {
+    public void savePosts(ArrayList<Content> posts) {
         try {
             for(Content content: posts)
             {
@@ -53,7 +53,7 @@ public class ContentRepository {
     }
 
     // Save stories to stories.json using FileManager
-    public void saveStories(List<Content> stories) {
+    public void saveStories(ArrayList<Content> stories) {
         try {
             for(Content content: stories)
             {
