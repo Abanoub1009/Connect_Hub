@@ -1,11 +1,17 @@
 package connect_hub.UserManagement;
 
 import connect_hub.ProfileManagment.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.security.MessageDigest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class UserDetails {
 
@@ -27,7 +33,9 @@ public class UserDetails {
         this.userId = userId;
         this.email = email;
         this.userName = userName;
-        setPassword(password);
+////        setPassword(password);
+//        this.password = password;
+this.password = hashPassword(password);
         this.dateOfBirth = dateOfBirth;
         this.status = "Offline";
         this.bio = "";
@@ -149,6 +157,29 @@ public class UserDetails {
         return true;
     }
 
+    public static String getPasswordFromFile(String userId) {
+        try {
+            // Read the JSON file into a string
+            String content = new String(Files.readAllBytes(new File("users.json").toPath()));
+
+            // Create a JSONArray from the JSON string
+            JSONArray users = new JSONArray(content);
+
+            // Loop through the array of users
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject user = users.getJSONObject(i);
+
+                // Check if the userId matches
+                if (user.getString("id").equals(userId)) {
+                    // Return the password if the userId matches
+                    return user.getString("password");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;  // Return null if no user is found
+    }
     public String getPassword() {
         return password;
     }
@@ -170,7 +201,7 @@ public class UserDetails {
         try {
             // create an obj from MessageDigest&&useSHA-256algo
             MessageDigest sha256 = MessageDigest.getInstance("SHA-256");
-            byte[] sha256byte = sha256.digest(password.getBytes()); // save it into byte array as it works with bytes
+            byte[] sha256byte = sha256.digest(password.getBytes(StandardCharsets.UTF_8)); // save it into byte array as it works with bytes
             StringBuilder hexString = new StringBuilder(); // convert vyte to hexadecimal
             for (byte b : sha256byte) { // haloop 3la kol byte to convert to 2-dig hexadec str then append it to the string
                 hexString.append(String.format("%02x", b)); // Format each byte as a 2-digit hex value
