@@ -21,6 +21,7 @@ public class ContentManager {
     public void createStory(String contentId, String authorId, String caption, String photo) {
         Content story = ContentFactory.createContent("story", contentId, authorId, caption, photo);
         ArrayList<Content> contents = contentRepository.loadContents();
+        contentRepository.earaseTheFileAfterLoad("story");
         contents.add(story);
         contentRepository.saveStories(contents);
     }
