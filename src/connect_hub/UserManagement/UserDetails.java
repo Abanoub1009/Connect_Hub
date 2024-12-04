@@ -21,7 +21,7 @@ public class UserDetails {
     private String profilePhoto;
     private String Email;
     private String coverPhoto;
-    private ArrayList<Friends> friends;
+    private ArrayList<UserDetails> friends;
     private ArrayList<Post> posts;
     private ArrayList<Story> stories;
     private ArrayList<UserDetails> blockedUsers;
