@@ -69,7 +69,7 @@ public class addStory extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Andalus", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Adding Post");
+        jLabel2.setText("Adding Story");
 
         attachPhoto.setBackground(new java.awt.Color(0, 0, 0));
         attachPhoto.setFont(new java.awt.Font("Andalus", 2, 18)); // NOI18N

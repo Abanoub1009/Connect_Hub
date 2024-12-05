@@ -4,14 +4,23 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/HomeScreen.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentRepository.java</file>
             <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentManager.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/SignUp.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentFactory.java</file>
-            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/ReadUsers.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/addPost.java</file>
             <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/LogIn.java</file>
             <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/LoginFrame.java</file>
             <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/Friends.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/FriendManagement/FriendManagement.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/NewsFeed/NewsFeed.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentRepository.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/FileManager.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/build.xml</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/addStory.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/SignUp.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/SignUpJFrame.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/ContentCreation/ContentFactory.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/ReadUsers.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/Connect_Hub.java</file>
+            <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/NewsFeed/ConnectHubGUI.java</file>
             <file>file:/C:/Users/bibos_bz87qw5/OneDrive/Desktop/Connect_Hub/src/connect_hub/UserManagement/UserDetails.java</file>
         </group>
     </open-files>

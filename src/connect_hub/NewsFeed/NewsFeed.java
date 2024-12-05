@@ -42,9 +42,9 @@ public class NewsFeed {
         }
     }
 
-    public List<Post> getPosts(UserDetails currentUser) {
-        List<Content> allContent = contentRepository.loadContents();
-        List<Post> posts = new ArrayList<>();
+    public ArrayList<Post> getPosts(UserDetails currentUser) {
+        ArrayList<Content> allContent = contentRepository.loadContents();
+        ArrayList<Post> posts = new ArrayList<>();
 
         for (Content content : allContent) {
             if (content instanceof Post) {
@@ -68,9 +68,9 @@ public class NewsFeed {
         return posts;
     }
 
-    public List<Story> getStories(UserDetails currentUser) {
-        List<Content> allContent = contentRepository.loadContents();
-        List<Story> stories = new ArrayList<>();
+    public ArrayList<Story> getStories(UserDetails currentUser) {
+        ArrayList<Content> allContent = contentRepository.loadContents();
+        ArrayList<Story> stories = new ArrayList<>();
         LocalDateTime now = LocalDateTime.now();
 
         for (Content content : allContent) {
@@ -97,7 +97,7 @@ public class NewsFeed {
 
     public void displayNewsFeed(UserDetails currentUser) {
         System.out.println("Stories:");
-        List<Story> stories = getStories(currentUser);
+        ArrayList<Story> stories = getStories(currentUser);
         for (Story story : stories) {
             System.out.println(story.getAuthorId() + " posted a story: " + story.getCaption());
         }

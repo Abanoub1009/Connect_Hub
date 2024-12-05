@@ -125,7 +125,7 @@
           <Font name="Andalus" size="18" style="2"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Adding Post"/>
+        <Property name="text" type="java.lang.String" value="Adding Story"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="attachPhoto">
