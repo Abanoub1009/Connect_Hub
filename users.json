@@ -10,7 +10,7 @@
         "posts": [],
         "email": "sherouk@gmail.com",
         "friends": [],
-        "status": "Offline"
+        "status": "Online"
     },
     {
         "password": "dc2073d977f7258e145bedba955595589ac09fe85f274cf52cb2b78f5b508ba0",
@@ -95,9 +95,37 @@
         "profilePhoto": "",
         "coverPhoto": "",
         "bio": "",
-        "id": "U10",
+        "dateOfBirth": "1-1-1111",
+        "id": "U11",
+        "userName": "semo",
         "posts": [],
-        "email": "noor@gmail.com",
+        "email": "SEmo@gmail.com",
+        "friends": [],
+        "status": "Offline"
+    },
+    {
+        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "1-2-0033",
+        "id": "U12",
+        "userName": "sheroukWaheed",
+        "posts": [],
+        "email": "sherouk@gmail.com",
+        "friends": [],
+        "status": "Offline"
+    },
+    {
+        "password": "c0429dbe4213a027b508d29783fa3420996fb11a98d70614dbc665ee094c3a88",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "2-2-2004",
+        "id": "U13",
+        "userName": "farah1222",
+        "posts": [],
+        "email": "farah@gmail.com",
         "friends": [],
         "status": "Online"
     },
@@ -106,12 +134,25 @@
         "profilePhoto": "",
         "coverPhoto": "",
         "bio": "",
-        "dateOfBirth": "1-1-1111",
-        "id": "U11",
-        "userName": "semo",
+        "dateOfBirth": "1-1-2003",
+        "id": "U14",
+        "userName": "abanoub",
         "posts": [],
-        "email": "SEmo@gmail.com",
+        "email": "abanoub@gmail.com",
         "friends": [],
-        "status": "Offline"
+        "status": "Online"
+    },
+    {
+        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+        "profilePhoto": "",
+        "coverPhoto": "",
+        "bio": "",
+        "dateOfBirth": "10-9-2004",
+        "id": "U15",
+        "userName": "adfaf",
+        "posts": [],
+        "email": "abanoub20@icloud.com",
+        "friends": [],
+        "status": "Online"
     }
 ]

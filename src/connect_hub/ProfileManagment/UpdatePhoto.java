@@ -1,5 +1,6 @@
 package connect_hub.ProfileManagment;
 
+import connect_hub.UserManagement.UserDetails;
 import java.util.ArrayList;
 
 /**
@@ -7,21 +8,21 @@ import java.util.ArrayList;
  * @author HP
  */
 public class UpdatePhoto {
-     ArrayList<User> users;
+     ArrayList<UserDetails> users;
 
   
-    public UpdatePhoto(ArrayList<User> users) {
+    public UpdatePhoto(ArrayList<UserDetails> users) {
         this.users = users;
     }
     public void changeProfilePhoto(String userId,String profilePhoto){
-        for(User user:users){
-             if (user.getId().equals(userId)) { {
+        for(UserDetails user:users){
+             if (user.getUserId().equals(userId)) { {
                  user.setProfilePhoto(profilePhoto);
              }
         }}}
         public void changeCoverPhoto(String userId,String profilePhoto){
-        for(User user:users){
-             if (user.getId().equals(userId)) { 
+        for(UserDetails user:users){
+             if (user.getUserId().equals(userId)) { 
                  user.setProfilePhoto(profilePhoto);
              
         }

@@ -1,4 +1,5 @@
 package connect_hub.UserManagement;
+import connect_hub.ProfileManagment.EditProfileWindow;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -154,6 +155,9 @@ public class LoginFrame extends javax.swing.JFrame {
             } else if (result.equals("invalidPassword")) {
                 JOptionPane.showMessageDialog(this, "Incorrect password.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            setVisible(false);
+            EditProfileWindow window=new EditProfileWindow(email);
+            window.setVisible(true);
 
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "An error occurred while logging in. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);

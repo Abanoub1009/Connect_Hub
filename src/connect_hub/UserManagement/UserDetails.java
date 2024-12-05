@@ -24,7 +24,6 @@ public class UserDetails {
     private String status;
     private String bio;
     private String profilePhoto;
-    private String Email;
     private String coverPhoto;
     private ArrayList<Friends> friends;
     private ArrayList<Posts> posts;
@@ -35,19 +34,38 @@ public class UserDetails {
         this.userName = userName;
 ////        setPassword(password);
 //        this.password = password;
-this.password = hashPassword(password);
+        this.password = hashPassword(password);
         this.dateOfBirth = dateOfBirth;
-        this.status = "Offline";
-        this.bio = "";
-        this.profilePhoto = "";
-        this.coverPhoto = "";
+//        this.status = "Offline";
+//        this.bio = "";
+//        this.profilePhoto = "";
+//        this.coverPhoto = "";
+        //assigm default value if null or empty
+        this.status = (status == null || status.isEmpty()) ? "Offline" : status;
+        this.bio = (bio == null || bio.isEmpty()) ? "Update your bio" : bio;
+        this.profilePhoto = (profilePhoto == null || profilePhoto.isEmpty()) ? "" : profilePhoto;
+        this.coverPhoto = (coverPhoto == null || coverPhoto.isEmpty()) ? "" : coverPhoto;
         this.friends = (friends == null) ? new ArrayList<>() : friends;
         this.posts = (posts == null) ? new ArrayList<>() : posts;
     }
 
+//    public UserDetails() {
+//
+//    }
     public UserDetails() {
+    this.userId = "";
+    this.email = "";
+    this.userName = "";
+    this.password = "";
+    this.dateOfBirth = "";
+    this.status = "Offline";
+    this.bio = "Update your bio";
+    this.profilePhoto = "";
+    this.coverPhoto = "";
+    this.friends = new ArrayList<>();
+    this.posts = new ArrayList<>();
+}
 
-    }
 
     public String getBio() {
         return bio;
@@ -180,6 +198,7 @@ this.password = hashPassword(password);
         }
         return null;  // Return null if no user is found
     }
+
     public String getPassword() {
         return password;
     }
@@ -227,4 +246,12 @@ this.password = hashPassword(password);
         this.status = status;
     }
 
+    public UserDetails getSpecificUser(ArrayList<UserDetails> users, String email) {
+        for (UserDetails user : users) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return null;
+    }
 }
