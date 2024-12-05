@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import connect_hub.ProfileManagment.*;
+package connect_hub.ProfileManagment;
+import connect_hub.UserManagement.UserDetails;
+import connect_hub.Friends;
+import connect_hub.Posts;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -13,10 +16,10 @@ import java.util.ArrayList;
  * @author HP
  */
 public class UpdatePassword {
-    ArrayList<User> users;
+    ArrayList<UserDetails> users;
 
   
-    public UpdatePassword(ArrayList<User> users) {
+    public UpdatePassword(ArrayList<UserDetails> users) {
         this.users = users;
     }
 
@@ -34,18 +37,18 @@ public class UpdatePassword {
 
     
     public void changePassword(String password, String id) throws NoSuchAlgorithmException {
-        for (User user : users) {
-            if (user.getId().equals(id)) {  
+        for (UserDetails user : users) {
+            if (user.getUserId().equals(id)) {  
                 if(validatePassword(password)){
                 String hashedPassword = HashedPassword(password); // Get the hashed password as a String
               if( checkPassword(user,hashedPassword)){
-                user.setHashedPassword(hashedPassword);  // Update hashed password
-                System.out.println("Password updated for user: " + user.getUsername());
+                user.setPassword(hashedPassword);  // Update hashed password
+                System.out.println("Password updated for user: " + user.getUserName());
             }}}
         }
     }
-    public boolean checkPassword(User user,String password) throws NoSuchAlgorithmException{
-        if(user.getHashedPassword().equals( password)){
+    public boolean checkPassword(UserDetails user,String password) throws NoSuchAlgorithmException{
+        if(user.getPassword().equals( password)){
             System.out.println("Password is same as the old one");
             return false;
         }
@@ -58,9 +61,9 @@ public boolean validatePassword(String password){
     }
     return true;
 }
-public User getSpecificUser(String password) throws NoSuchAlgorithmException{
-    for(User user:users){
-       if(user.getHashedPassword().equals(HashedPassword(password))) ;
+public UserDetails getSpecificUser(String password) throws NoSuchAlgorithmException{
+    for(UserDetails user:users){
+       if(user.getPassword().equals(HashedPassword(password))) ;
        return user;
     }
     return null;
