@@ -1,26 +1,113 @@
 [
     {
+        "request": [],
+        "coverPhoto": "F:\\425751823_3588125651452582_287507153334925702_n.jpg",
+        "bio": "hello",
+        "dateOfBirth": "10-9-2004",
+        "userName": "abanoub",
+        "posts": [],
+        "friends": [],
         "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
-        "dateOfBirth": "10-9-2000",
+        "profilePhoto": "F:\\425751823_3588125651452582_287507153334925702_n.jpg",
+        "blocked": [],
         "id": "U0",
-        "userName": "qwdq",
         "email": "bibosoliman20@icloud.com",
         "status": "Offline"
     },
     {
-        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
-        "dateOfBirth": "2-2-2000",
+        "request": [],
+        "coverPhoto": "src/connect_hub/Images/cover.jpg",
+        "bio": "Update your bio ",
+        "dateOfBirth": "10-9-2004",
+        "userName": "bibo",
+        "posts": [{
+            "Content": "hello from my post 1",
+            "Image": "F:\\425751823_3588125651452582_287507153334925702_n.jpg",
+            "Timestamp": "2024-12-06T18:47:56.827043700"
+        }],
+        "friends": [],
+        "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+        "profilePhoto": "src/connect_hub/Images/pp.png",
+        "blocked": [],
         "id": "U1",
-        "userName": "SheroukWaheed",
-        "email": "Sherouk@gmail.com",
+        "email": "abanoub20@gmail.com",
+        "status": "Offline"
+    },
+    {
+        "request": [],
+        "coverPhoto": "C:\\Users\\HP\\Pictures\\Camera Roll\\Saved Pictures\\beautiful-images-10.jpg",
+        "bio": "new",
+        "dateOfBirth": "11-10-2023",
+        "userName": "shahd",
+        "posts": [],
+        "friends": [],
+        "password": "1a5376ad727d65213a79f3108541cf95012969a0d3064f108b5dd6e7f8c19b89",
+        "profilePhoto": "C:\\Users\\HP\\Pictures\\Camera Roll\\WIN_20241021_13_52_02_Pro.jpg",
+        "blocked": [],
+        "id": "U2",
+        "email": "shahdd@gmail.com",
+        "status": "Offline"
+    },
+    {
+        "request": [],
+        "coverPhoto": "src/connect_hub/Images/cover.jpg",
+        "bio": "Update your bio ",
+        "dateOfBirth": "1-1-2002",
+        "userName": "sheroukwaheed",
+        "posts": [],
+        "friends": [],
+        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+        "profilePhoto": "src/connect_hub/Images/pp.png",
+        "blocked": [],
+        "id": "U3",
+        "email": "sher@gmail.com",
+        "status": "Offline"
+    },
+    {
+        "request": [],
+        "coverPhoto": "src/connect_hub/Images/cover.jpg",
+        "bio": "Update your bio ",
+        "dateOfBirth": "1-1-2001",
+        "userName": "sheroukwah",
+        "posts": [
+            {
+                "Content": "lk",
+                "Image": "C:\\Users\\shero\\Pictures\\Screenshots\\Screenshot (35).png",
+                "Timestamp": "2024-12-06T21:40:50.592403800"
+            },
+            {
+                "Content": "kjdjdj",
+                "Image": "C:\\Users\\shero\\Pictures\\Screenshots\\Screenshot (34).png",
+                "Timestamp": "2024-12-06T22:29:42.396084"
+            }
+        ],
+        "friends": [],
+        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+        "profilePhoto": "src/connect_hub/Images/pp.png",
+        "blocked": [{
+            "FriendUserName": "sama mohamed",
+            "status": "Offline"
+        }],
+        "id": "U4",
+        "email": "sherouk@gmail.com",
         "status": "Online"
     },
     {
-        "password": "e6a4ff9df5c3e4523900da36e7b538681c2ae36b0170cb17e1a3522a94e08c86",
-        "dateOfBirth": "1-2-2009",
-        "id": "U2",
-        "userName": "ZZZZ",
-        "email": "ZZZ@gmail.com",
+        "request": [],
+        "coverPhoto": "src/connect_hub/Images/cover.jpg",
+        "bio": "Update your bio ",
+        "dateOfBirth": "1-1-2001",
+        "userName": "sama mohamed",
+        "posts": [],
+        "friends": [{
+            "FriendUserName": "sheroukwah",
+            "status": "Online"
+        }],
+        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
+        "profilePhoto": "src/connect_hub/Images/pp.png",
+        "blocked": [],
+        "id": "U5",
+        "email": "sama@gmail.com",
         "status": "Offline"
     }
 ]

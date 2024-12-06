@@ -9,11 +9,11 @@ import org.json.JSONObject;
 public class LogIn extends UserDetails {
 
     public LogIn(String email, String password) throws IOException {
-        super(null, email, null, password, null, "online");
+        super(null, email, null, password, null, "Online",null,null,null,null);
     }
 
     public String checkLoginCredentials(String email, String password) throws IOException {
-        JSONArray usersArray = ReadUsers.readUsersFromFile("users.json");
+        JSONArray usersArray = ReadUsers.readUsersFromFile();
         boolean userFound = false;
 
         for (int i = 0; i < usersArray.length(); i++) {

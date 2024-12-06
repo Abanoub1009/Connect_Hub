@@ -20,7 +20,7 @@ public class FileManager<T> {
     }
 
     public static JSONArray loadFromFile(String filePath) {
-        JSONArray Array = new JSONArray();
+        JSONArray jsonArray = new JSONArray();
         File file = new File(filePath);
 
         if (!file.exists()) {
@@ -39,18 +39,19 @@ public class FileManager<T> {
             }
 
             if (!jsonData.isEmpty()) {
-                Array = new JSONArray(jsonData.toString());
+                jsonArray = new JSONArray(jsonData.toString());
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return Array;
+        return jsonArray;
     }
 
     public void writeToJson(T object) throws IOException {
         JSONArray jsonArray = new JSONArray();
         int nextId = 0;
 
+        // Read existing data from file
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             StringBuilder jsonData = new StringBuilder();
             String line;
@@ -82,7 +83,25 @@ public class FileManager<T> {
                 field.setAccessible(true);
                 try {
                     Object value = field.get(post);
-                    if (field.getName() == "id") {
+                    if (field.getName().equals("id")) {
+                        jsonObject.put(field.getName(), newId);
+                    } else {
+                        jsonObject.put(field.getName(), value);
+                    }
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        } else if (object instanceof Story) {
+            Story story = (Story) object;
+
+            // Use reflection to get all fields and their values dynamically for Story
+            Field[] fields = Story.class.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                try {
+                    Object value = field.get(story);
+                    if (field.getName().equals("id")) {
                         jsonObject.put(field.getName(), newId);
                     } else {
                         jsonObject.put(field.getName(), value);
