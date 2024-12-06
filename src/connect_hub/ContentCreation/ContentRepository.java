@@ -63,7 +63,6 @@ public class ContentRepository {
         try {
             for (Content content : stories) {
                 Story story = (Story) content;
-//                System.out.println(story.getCaption());
                 storyManager.writeToJson(story);
             }
         } catch (IOException e) {

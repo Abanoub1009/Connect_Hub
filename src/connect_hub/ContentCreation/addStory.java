@@ -4,7 +4,6 @@
  */
 package connect_hub.ContentCreation;
 
-<<<<<<< Updated upstream
 import connect_hub.UserManagement.ReadUsers;
 import connect_hub.UserManagement.UserDetails;
 import java.awt.Image;
@@ -13,10 +12,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-=======
-import java.awt.Image;
-import java.io.File;
->>>>>>> Stashed changes
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -29,15 +24,11 @@ public class addStory extends javax.swing.JFrame {
 
     private ContentManager contentManger;
     private String photoPath = "";
-<<<<<<< Updated upstream
     private String email;
-=======
->>>>>>> Stashed changes
 
     /**
      * Creates new form addPost
      */
-<<<<<<< Updated upstream
     public addStory(String email) {
         initComponents();
         this.contentManger = new ContentManager("stories.json");
@@ -47,13 +38,6 @@ public class addStory extends javax.swing.JFrame {
     {
         initComponents();
     }
-=======
-    public addStory() {
-        initComponents();
-        this.contentManger = new ContentManager("stories.json");
-    }
-
->>>>>>> Stashed changes
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -167,11 +151,7 @@ public class addStory extends javax.swing.JFrame {
 
     private void attachPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_attachPhotoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-<<<<<<< Updated upstream
         fileChooser.setDialogTitle("stories");
-=======
-        fileChooser.setDialogTitle("Posts");
->>>>>>> Stashed changes
         int userSelection = fileChooser.showSaveDialog(this);
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File Potofile = fileChooser.getSelectedFile();
@@ -202,7 +182,6 @@ public class addStory extends javax.swing.JFrame {
 
     private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
         String captionStr = caption.getText();
-<<<<<<< Updated upstream
         UserDetails u = new UserDetails();
         try {
             ArrayList<UserDetails> users = ReadUsers.readUsersFromFile("users.json");
@@ -217,11 +196,6 @@ public class addStory extends javax.swing.JFrame {
         try {
             // Assuming createPost takes captionStr and photoPath as arguments
             contentManger.createStory(captionStr, u.getUserId(), captionStr, photoPath);
-=======
-        try {
-            // Assuming createPost takes captionStr and photoPath as arguments
-            contentManger.createStory(captionStr, captionStr, captionStr, photoPath);
->>>>>>> Stashed changes
 
             JOptionPane.showMessageDialog(
                     this,
@@ -229,19 +203,11 @@ public class addStory extends javax.swing.JFrame {
                     "Success",
                     JOptionPane.INFORMATION_MESSAGE
             );
-<<<<<<< Updated upstream
-=======
-            setVisible(false);
->>>>>>> Stashed changes
         } catch (Exception e) {
             // Display the error message
             JOptionPane.showMessageDialog(
                     this,
-<<<<<<< Updated upstream
                     "An error occurred while creating the Story:\n" + e.getMessage(),
-=======
-                    "An error occurred while creating the post:\n" + e.getMessage(),
->>>>>>> Stashed changes
                     "Error",
                     JOptionPane.ERROR_MESSAGE
             );

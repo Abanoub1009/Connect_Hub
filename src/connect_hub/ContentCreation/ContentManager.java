@@ -21,19 +21,9 @@ public class ContentManager {
 
     public void createStory(String contentId, String authorId, String caption, String photo) {
         Content story = ContentFactory.createContent("story", contentId, authorId, caption, photo);
-<<<<<<< Updated upstream
         ArrayList<Content> contents = contentRepository.loadStories();
         contentRepository.eraseTheFileAfterLoad("story");
-=======
-        System.out.println(story.getCaption());
-        ArrayList<Content> contents = contentRepository.loadContents();
-        contentRepository.earaseTheFileAfterLoad("story");
->>>>>>> Stashed changes
         contents.add(story);
-        for(Content content: contents)
-        {
-            System.out.println(content.getCaption());
-        }
         contentRepository.saveStories(contents);
     }
 
