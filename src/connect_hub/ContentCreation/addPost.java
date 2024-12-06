@@ -4,8 +4,15 @@
  */
 package connect_hub.ContentCreation;
 
+import connect_hub.UserManagement.PutUsers;
+import connect_hub.UserManagement.ReadUsers;
+import connect_hub.UserManagement.UserDetails;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -18,13 +25,19 @@ public class addPost extends javax.swing.JFrame {
 
     private ContentManager contentManger;
     private String photoPath = "";
+    private String email;
 
     /**
      * Creates new form addPost
      */
-    public addPost() {
+    public addPost(String email) {
         initComponents();
         this.contentManger = new ContentManager("posts.json");
+        this.email = email;
+    }
+
+    public addPost() {
+        initComponents();
     }
 
     /**
@@ -172,15 +185,31 @@ public class addPost extends javax.swing.JFrame {
     private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
         String captionStr = caption.getText();
         try {
-            // Assuming createPost takes captionStr and photoPath as arguments
-            contentManger.createPost(captionStr, captionStr, captionStr, photoPath);
+            ArrayList<UserDetails> users = ReadUsers.readUsersFromFile("users.json");
+            for (UserDetails user : users) {
+                if (user.getEmail().equals(email)) {
+                    Post post = contentManger.createPost(captionStr, user.getUserId(), captionStr, photoPath);
 
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Post Created Successfully",
-                    "Success",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Post Created Successfully",
+                            "Success",
+                            JOptionPane.INFORMATION_MESSAGE
+                    );
+                    user.getPosts().add(post);
+                    for (Post p : user.getPosts()) {
+                        System.out.println(p.getCaption());
+                        break;
+                    }
+                    PutUsers.save(users);
+
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(addStory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            // Assuming createPost takes captionStr and photoPath as arguments
         } catch (Exception e) {
             // Display the error message
             JOptionPane.showMessageDialog(

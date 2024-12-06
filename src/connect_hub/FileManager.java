@@ -107,36 +107,15 @@ public class FileManager<T> {
                 }
             }
         }
-        else if (object instanceof Story) {
-            Story story = (Story) object;
 
-            // Use reflection to get all fields and their values dynamically for Post
-            Field[] fields = Story.class.getDeclaredFields();
-            for (Field field : fields) {
-                field.setAccessible(true);
-                try {
-                    Object value = field.get(story);
-                    if (field.getName() == "id") {
-                        jsonObject.put(field.getName(), newId);
-                    } else {
-                        jsonObject.put(field.getName(), value);
-                    }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
+        // Add the new object to the JSON array
+        jsonArray.put(jsonObject);
 
-            // Add the new object to the JSON array
-            jsonArray.put(jsonObject);
-
-            // Write the updated array back to the file
-            try (FileWriter file = new FileWriter(filePath)) {
-                file.write(jsonArray.toString(4));  // Pretty print with indentation
-            }
+        // Write the updated array back to the file
+        try (FileWriter file = new FileWriter(filePath)) {
+            file.write(jsonArray.toString(4));  // Pretty print with indentation
         }
     }
-
-    
 
     public void deleteJsonFile() {
         File file = new File(filePath);

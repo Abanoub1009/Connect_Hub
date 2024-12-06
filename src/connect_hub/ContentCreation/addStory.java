@@ -4,8 +4,14 @@
  */
 package connect_hub.ContentCreation;
 
+import connect_hub.UserManagement.ReadUsers;
+import connect_hub.UserManagement.UserDetails;
 import java.awt.Image;
 import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -18,15 +24,20 @@ public class addStory extends javax.swing.JFrame {
 
     private ContentManager contentManger;
     private String photoPath = "";
+    private String email;
 
     /**
      * Creates new form addPost
      */
-    public addStory() {
+    public addStory(String email) {
         initComponents();
         this.contentManger = new ContentManager("stories.json");
+        this.email = email;
     }
-
+    public addStory()
+    {
+        initComponents();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,9 +182,20 @@ public class addStory extends javax.swing.JFrame {
 
     private void postActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postActionPerformed
         String captionStr = caption.getText();
+        UserDetails u = new UserDetails();
+        try {
+            ArrayList<UserDetails> users = ReadUsers.readUsersFromFile("users.json");
+            for(UserDetails user: users)
+            {
+                if(user.getEmail().equals(email))
+                    u= user;
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(addStory.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             // Assuming createPost takes captionStr and photoPath as arguments
-            contentManger.createStory(captionStr, captionStr, captionStr, photoPath);
+            contentManger.createStory(captionStr, u.getUserId(), captionStr, photoPath);
 
             JOptionPane.showMessageDialog(
                     this,

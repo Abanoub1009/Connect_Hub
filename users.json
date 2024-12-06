@@ -1,26 +1,32 @@
 [
     {
         "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
-        "dateOfBirth": "10-9-2000",
+        "profilePhoto": "F:\\425751823_3588125651452582_287507153334925702_n.jpg",
+        "coverPhoto": "F:\\425751823_3588125651452582_287507153334925702_n.jpg",
+        "bio": "hello",
+        "dateOfBirth": "10-9-2004",
         "id": "U0",
-        "userName": "qwdq",
+        "userName": "abanoub",
+        "posts": [],
         "email": "bibosoliman20@icloud.com",
+        "friends": [],
         "status": "Offline"
     },
     {
-        "password": "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225",
-        "dateOfBirth": "2-2-2000",
+        "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
+        "profilePhoto": "src/connect_hub/Images/pp.png",
+        "coverPhoto": "src/connect_hub/Images/cover.jpg",
+        "bio": "Update your bio ",
+        "dateOfBirth": "10-9-2004",
         "id": "U1",
-        "userName": "SheroukWaheed",
-        "email": "Sherouk@gmail.com",
+        "userName": "bibo",
+        "posts": [{
+            "Content": "hello from my post 1",
+            "Image": "F:\\425751823_3588125651452582_287507153334925702_n.jpg",
+            "Timestamp": "2024-12-06T18:47:56.827043700"
+        }],
+        "email": "abanoub20@gmail.com",
+        "friends": [],
         "status": "Online"
-    },
-    {
-        "password": "e6a4ff9df5c3e4523900da36e7b538681c2ae36b0170cb17e1a3522a94e08c86",
-        "dateOfBirth": "1-2-2009",
-        "id": "U2",
-        "userName": "ZZZZ",
-        "email": "ZZZ@gmail.com",
-        "status": "Offline"
     }
 ]

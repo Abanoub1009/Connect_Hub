@@ -10,21 +10,24 @@ package connect_hub.UserManagement;
  * @author HP
  */
 public class Friends {
-    private String friendUserName;
+    private String friendUsername;
     private String status;
 
-    public Friends(String friendUserName, String status) {
-        this.friendUserName = friendUserName;
+    public Friends(String friendUsername, String status) {
+        this.friendUsername = friendUsername;
         this.status = status;
     }
 
     public String getFriendd() {
-        return friendUserName;
+        return friendUsername;
     }
 
-    public void setFriend(String friend) {
-        this.friendUserName = friend;
+    public void setFriendd(String friendUsername) {
+        this.friendUsername = friendUsername;
     }
+
+    
+    
 
     public String isStatus() {
         return status;
@@ -36,7 +39,7 @@ public class Friends {
 
     @Override
     public String toString() {
-        return "Friends{" + "friend=" + friendUserName + ", status=" + status + '}';
+        return "Friends{" + "friend=" + friendUsername + ", status=" + status + '}';
     }
     
 }
