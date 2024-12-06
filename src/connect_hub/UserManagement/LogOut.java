@@ -5,24 +5,27 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
+import java.util.ArrayList;
 
 public class LogOut extends UserDetails {
 
+        private PutUsers putUsers = new PutUsers();
+
     public LogOut(String email) throws IOException {
-        super(null, email, null, null, null, null);
+        super(null, email, null, null, null, null,null,null);
     }
 
     public String checkLogOutCredentials(String email) throws IOException {
-        JSONArray usersArray = ReadUsers.readUsersFromFile("users.json");
+        ArrayList<UserDetails>usersArray = ReadUsers.readUsersFromFile("users.json");
         boolean userFound = false;
 
-        for (int i = 0; i < usersArray.length(); i++) {
-            JSONObject userJson = usersArray.getJSONObject(i);
-            String storedEmail = userJson.getString("email");
+        for (int i = 0; i < usersArray.size(); i++) {
+            UserDetails user = usersArray.get(i);
+            String storedEmail = user.getEmail();
 
             if (email.equals(storedEmail)) {
    //             if (userJson.optString("status").equalsIgnoreCase("Online")) {
-                    userJson.put("status", "Offline");
+                   user.setStatus("Offline");
                     userFound = true;
                     break;
        //         } else {
@@ -31,7 +34,7 @@ public class LogOut extends UserDetails {
             }
         }
         if (userFound) {
-            saveUsersToFile(usersArray);
+            putUsers.writeUserToJson(this);
             return "Logout successful"; 
         } else {
             return "invalidEmail";

@@ -10,17 +10,19 @@ public class ContentManager {
         this.contentRepository = new ContentRepository(filePath);
     }
 
-    public void createPost(String contentId, String authorId, String caption, String photo) {
+    public Post createPost(String contentId, String authorId, String caption, String photo) {
         Content post = ContentFactory.createContent("post", contentId, authorId, caption, photo);
         ArrayList<Content> contents = contentRepository.loadContents();
         contentRepository.earaseTheFileAfterLoad("post");
         contents.add(post);
         contentRepository.savePosts(contents);
+        return (Post) post;
     }
 
     public void createStory(String contentId, String authorId, String caption, String photo) {
         Content story = ContentFactory.createContent("story", contentId, authorId, caption, photo);
         ArrayList<Content> contents = contentRepository.loadContents();
+        contentRepository.earaseTheFileAfterLoad("story");
         contents.add(story);
         contentRepository.saveStories(contents);
     }

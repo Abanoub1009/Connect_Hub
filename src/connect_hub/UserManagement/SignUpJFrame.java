@@ -87,28 +87,24 @@ public class SignUpJFrame extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(51, 204, 255));
         jLabel4.setText("Date Of Birth:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 255, 255));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jPasswordField1ActionPerformed(evt);
             }
         });
 
-        jFormattedTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d-M-yyyy"))));
         jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,8 +112,6 @@ public class SignUpJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Sign Up");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

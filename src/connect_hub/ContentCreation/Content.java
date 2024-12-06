@@ -9,6 +9,6 @@ public interface Content {
     String getAuthorId();
     String getCaption();
     String getPhoto();
-    LocalDateTime getTimestamp();
+    String getTimestamp();
     boolean isExpired();
 }
