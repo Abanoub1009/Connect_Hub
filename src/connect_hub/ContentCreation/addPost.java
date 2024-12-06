@@ -190,6 +190,7 @@ public class addPost extends javax.swing.JFrame {
                 if (user.getEmail().equals(email)) {
                     Post post = contentManger.createPost(captionStr, user.getUserId(), captionStr, photoPath);
 
+<<<<<<< Updated upstream
                     JOptionPane.showMessageDialog(
                             this,
                             "Post Created Successfully",
@@ -210,6 +211,15 @@ public class addPost extends javax.swing.JFrame {
         }
         try {
             // Assuming createPost takes captionStr and photoPath as arguments
+=======
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Post Created Successfully",
+                    "Success",
+                    JOptionPane.INFORMATION_MESSAGE
+            );
+            setVisible(false);
+>>>>>>> Stashed changes
         } catch (Exception e) {
             // Display the error message
             JOptionPane.showMessageDialog(
