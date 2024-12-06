@@ -3,28 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/ViewPostsWindow.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/UserManagement/ReadUsers.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/UserManagement/PutUsers.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/EditProfileWindow.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/UpdatePhoto.java</file>
+            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/Connect_Hub.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/ChangePasswordWindow.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/users.json</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/UserManagement/LogIn.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/UpdatePassword.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/Posts.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/UserManagement/LoginFrame.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/FileManager.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/ChangeBioWindow.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/UpdateBio.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/UserManagement/SignUpJFrame.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/ReadUsers.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/GetListOfPosts.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/getListOfFriendsWindow.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/Friends.java</file>
             <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/UserManagement/UserDetails.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ProfileManagment/PutUsers.java</file>
-            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/ContentCreation/Post.java</file>
+            <file>file:/C:/Users/shero/Desktop/Connect_Hub/src/connect_hub/Images/pp.png</file>
         </group>
     </open-files>
 </project-private>

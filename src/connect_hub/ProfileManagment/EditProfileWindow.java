@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package connect_hub.ProfileManagment;
+
 import connect_hub.UserManagement.UserDetails;
 import connect_hub.UserManagement.PutUsers;
 import connect_hub.UserManagement.ReadUsers;
@@ -22,18 +23,38 @@ import javax.swing.JOptionPane;
  *
  * @author HP
  */
-public class  EditProfileWindow extends javax.swing.JFrame {
-        
+public class EditProfileWindow extends javax.swing.JFrame {
+
     String email;
- 
+
     public EditProfileWindow(String email) {
         initComponents();
-        this.email=email;
+        this.email = email;
+        openWindow(email);
     }
 
     public EditProfileWindow() {
     }
-    
+
+    public void openWindow(String email) {
+        ArrayList<UserDetails> userList = new ArrayList<>();
+        try {
+            userList = ReadUsers.readUsersFromFile("users.json");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        UserDetails user = new UserDetails();
+        user = user.getSpecificUser(userList, email);
+        ImageIcon i = new ImageIcon(user.getCoverPhoto());
+        jLabel2.setIcon(i);
+        ImageIcon i2 = new ImageIcon(user.getProfilePhoto());
+        jLabel1.setIcon(i2);
+        jLabel7.setText(user.getBio());
+        jLabel6.setText(user.getUserName());
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -52,11 +73,8 @@ public class  EditProfileWindow extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
@@ -110,11 +128,6 @@ public class  EditProfileWindow extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(55, 204, 255));
-        jLabel3.setText("Email:");
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(55, 204, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -126,13 +139,6 @@ public class  EditProfileWindow extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Get List");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton7.setText("Enter");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 16)); // NOI18N
         jLabel6.setText("UserName");
@@ -149,48 +155,37 @@ public class  EditProfileWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(53, 53, 53)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(252, 252, 252))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(204, 204, 204))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(188, 188, 188))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(227, 227, 227))))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(188, 188, 188))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(381, 381, 381)
                         .addComponent(jButton8)))
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,21 +198,21 @@ public class  EditProfileWindow extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton6)
                                         .addGap(32, 32, 32))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jButton3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton1)))
-                                .addGap(14, 14, 14)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton4))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -225,12 +220,7 @@ public class  EditProfileWindow extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel7)))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(jButton8)
                 .addGap(39, 39, 39))
         );
@@ -239,169 +229,149 @@ public class  EditProfileWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       ChangePasswordWindow changePassword=new ChangePasswordWindow();
-      changePassword.setVisible(true);
+        ChangePasswordWindow changePassword = new ChangePasswordWindow();
+        changePassword.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-  JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Select Cover Photo");
-    fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-    email=   jTextField1.getText();
-      ArrayList<UserDetails> userList = new ArrayList<>();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select Cover Photo");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        ArrayList<UserDetails> userList = new ArrayList<>();
         try {
-        userList = ReadUsers.readUsersFromFile("users.json");
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        return; }
-        
-      UserDetails user=new UserDetails();
-      user=user.getSpecificUser(userList, email);
-      
-    // Add a file filter to accept only image files
-    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
-        "Image files", "jpg", "jpeg", "png", "bmp", "gif"));
-    
-    // Show the dialog and get the result
-    int result = fileChooser.showOpenDialog(this);
-    
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File selectedFile = fileChooser.getSelectedFile();
-        
-        // Update the user's cover photo (you might want to save this to the user's profile)
-        String coverPhotoPath = selectedFile.getAbsolutePath();
-        
-        // Display the selected image in the cover photo label
-        ImageIcon coverIcon = resizeImage(coverPhotoPath, jLabel2.getWidth(), jLabel2.getHeight());
-        jLabel2.setIcon(coverIcon);
-         user.setCoverPhoto(coverPhotoPath);
-      try {
-          PutUsers.save(userList);
-      } catch (IOException ex) {
-          Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
-      }
+            userList = ReadUsers.readUsersFromFile("users.json");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        UserDetails user2 = new UserDetails();
+        user2 = user2.getSpecificUser(userList, email);
+
+        // Add a file filter to accept only image files
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
+                "Image files", "jpg", "jpeg", "png", "bmp", "gif"));
+
+        // Show the dialog and get the result
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+
+            // Update the user's cover photo (you might want to save this to the user's profile)
+            String coverPhotoPath = selectedFile.getAbsolutePath();
+
+            // Display the selected image in the cover photo label
+            ImageIcon coverIcon = new ImageIcon(coverPhotoPath);
+            Image image = coverIcon.getImage();
+            int width = (int) (jLabel2.getWidth() * 1);
+            int height = (int) (jLabel2.getHeight() * 1);
+            Image scaled = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            ImageIcon scaledimage = new ImageIcon(scaled);
+
+            jLabel2.setIcon(scaledimage);
+            user2.setCoverPhoto(coverPhotoPath);
+            System.out.println(user2.getCoverPhoto());
+            try {
+
+                PutUsers.save(userList);
+                System.out.println("success");
+                //ReadUsers.readUsersFromFile("users.json");
+            } catch (IOException ex) {
+                Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
      }//GEN-LAST:event_jButton3ActionPerformed
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       JFileChooser fileChooser = new JFileChooser();
-    fileChooser.setDialogTitle("Select Profile Photo");
-    fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-  email=   jTextField1.getText();
-      ArrayList<UserDetails> userList = new ArrayList<>();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select Profile Photo");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        ArrayList<UserDetails> userList = new ArrayList<>();
         try {
-        userList = ReadUsers.readUsersFromFile("users.json");
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        return; } 
-      UserDetails user=new UserDetails();
-      user=user.getSpecificUser(userList, email);
-    // Add a file filter to accept only image files
-    fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
-        "Image files", "jpg", "jpeg", "png", "bmp", "gif"));
-    
-    // Show the dialog and get the result
-    int result = fileChooser.showOpenDialog(this);
-    
-    if (result == JFileChooser.APPROVE_OPTION) {
-        File selectedFile = fileChooser.getSelectedFile();
-        
-        // Update the user's cover photo (you might want to save this to the user's profile)
-        String ProfilePhotoPath = selectedFile.getAbsolutePath();
-        
-        // Display the selected image in the cover photo label
-        ImageIcon ProfileIcon = resizeImage(ProfilePhotoPath, jLabel1.getWidth(), jLabel1.getHeight());
-        jLabel1.setIcon(ProfileIcon);
-        user.setProfilePhoto(ProfilePhotoPath);
-           try {
-               PutUsers.save(userList);
-           } catch (IOException ex) {
-               Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
-           }
+            userList = ReadUsers.readUsersFromFile("users.json");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        UserDetails user = new UserDetails();
+        user = user.getSpecificUser(userList, email);
+        System.out.println(user);
+        // Add a file filter to accept only image files
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
+                "Image files", "jpg", "jpeg", "png", "bmp", "gif"));
+
+        // Show the dialog and get the result
+        int result = fileChooser.showOpenDialog(this);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+
+            // Update the user's cover photo (you might want to save this to the user's profile)
+            String ProfilePhotoPath = selectedFile.getAbsolutePath();
+
+            // Display the selected image in the cover photo label
+            ImageIcon coverIcon = new ImageIcon(ProfilePhotoPath);
+            Image image = coverIcon.getImage();
+            int width = (int) (jLabel1.getWidth() * 1);
+            int height = (int) (jLabel1.getHeight() * 1);
+            Image scaled = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            ImageIcon scaledimage = new ImageIcon(scaled);
+
+            jLabel1.setIcon(scaledimage);
+            user.setProfilePhoto(ProfilePhotoPath);
+            try {
+                PutUsers.save(userList);
+            } catch (IOException ex) {
+                Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         email=   jTextField1.getText();
-        ChangeBioWindow changeBio=new ChangeBioWindow(email);
-      changeBio.setVisible(true);
-       email=   jTextField1.getText();
-      ArrayList<UserDetails> userList = new ArrayList<>();
+
+        ChangeBioWindow changeBio = new ChangeBioWindow(email);
+        changeBio.setVisible(true);
+
+        ArrayList<UserDetails> userList = new ArrayList<>();
         try {
-        userList = ReadUsers.readUsersFromFile("users.json");
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    } 
-      
-      UserDetails user=new UserDetails();
-      user=user.getSpecificUser(userList, email);
-      System.out.print(user.getBio());
-      jLabel7.setText(user.getBio());
+            userList = ReadUsers.readUsersFromFile("users.json");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        UserDetails user = new UserDetails();
+        user = user.getSpecificUser(userList, email);
+        System.out.print(user.getBio());
+        jLabel7.setText(user.getBio());
     }//GEN-LAST:event_jButton4ActionPerformed
 
 
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        email=   jTextField1.getText();
+
         System.out.println(email);
-        
-        GetListOfPosts list=new GetListOfPosts(email);
-       list.setVisible(true);
+
+        GetListOfPosts list = new GetListOfPosts(email);
+        list.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        email=   jTextField1.getText();
-       
+
         getListOfFriendsWindow list;
-    try {
-        list = new getListOfFriendsWindow (email);
-         list.setVisible(true);
-    } catch (NoSuchAlgorithmException ex) {
-        Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IOException ex) {
-        Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
-    }
-      
+        try {
+            list = new getListOfFriendsWindow(email);
+            list.setVisible(true);
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(EditProfileWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-      try{
-     email=   jTextField1.getText();
-      ArrayList<UserDetails> userList = new ArrayList<>();
-        try {
-        userList = ReadUsers.readUsersFromFile("users.json");
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(this, "Error reading users from file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        return; } 
-      UserDetails user=new UserDetails();
-      user=user.getSpecificUser(userList, email);
-      System.out.println(user);
-      jLabel6.setText(user.getUserName());
-     
-      jLabel7.setText(user.getBio());
-        if (user.getProfilePhoto() != null) {
-        ImageIcon profileIcon = resizeImage(user.getProfilePhoto(), jLabel1.getWidth(), jLabel1.getHeight());
-        jLabel1.setIcon(profileIcon);
-    }
-    
-    // Resize and set cover photo
-    if (user.getCoverPhoto() != null) {
-        ImageIcon coverIcon = resizeImage(user.getCoverPhoto(), jLabel2.getWidth(), jLabel2.getHeight());
-        jLabel2.setIcon(coverIcon);
-    }}catch(NumberFormatException e){
-        JOptionPane.showMessageDialog(null, "Invalid ", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-      catch(NullPointerException e){
-        JOptionPane.showMessageDialog(null, "Invalid ", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-    }//GEN-LAST:event_jButton7ActionPerformed
-private ImageIcon resizeImage(String imagePath, int width, int height) {
-    ImageIcon originalIcon = new ImageIcon(imagePath);
-    Image originalImage = originalIcon.getImage();
-    Image resizedImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-    return new ImageIcon(resizedImage);
-}
     /**
      * @param args the command line arguments
      */
@@ -445,15 +415,12 @@ private ImageIcon resizeImage(String imagePath, int width, int height) {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

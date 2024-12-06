@@ -36,15 +36,10 @@ public class UserDetails {
 //        this.password = password;
         this.password = hashPassword(password);
         this.dateOfBirth = dateOfBirth;
-//        this.status = "Offline";
-//        this.bio = "";
-//        this.profilePhoto = "";
-//        this.coverPhoto = "";
-        //assigm default value if null or empty
-        this.status = (status == null || status.isEmpty()) ? "Offline" : status;
-        this.bio = (bio == null || bio.isEmpty()) ? "Update your bio" : bio;
-        this.profilePhoto = (profilePhoto == null || profilePhoto.isEmpty()) ? "" : profilePhoto;
-        this.coverPhoto = (coverPhoto == null || coverPhoto.isEmpty()) ? "" : coverPhoto;
+        this.status = "Offline";
+        this.bio = "Update your bio ";
+        this.profilePhoto = "src/connect_hub/Images/pp.png";
+        this.coverPhoto = "src/connect_hub/Images/cover.jpg";
         this.friends = (friends == null) ? new ArrayList<>() : friends;
         this.posts = (posts == null) ? new ArrayList<>() : posts;
     }
@@ -53,19 +48,18 @@ public class UserDetails {
 //
 //    }
     public UserDetails() {
-    this.userId = "";
-    this.email = "";
-    this.userName = "";
-    this.password = "";
-    this.dateOfBirth = "";
-    this.status = "Offline";
-    this.bio = "Update your bio";
-    this.profilePhoto = "";
-    this.coverPhoto = "";
-    this.friends = new ArrayList<>();
-    this.posts = new ArrayList<>();
-}
-
+        this.userId = "";
+        this.email = "";
+        this.userName = "";
+        this.password = "";
+        this.dateOfBirth = "";
+        this.status = "Offline";
+        this.bio = "Update your bio";
+        this.profilePhoto = "";
+        this.coverPhoto = "";
+        this.friends = new ArrayList<>();
+        this.posts = new ArrayList<>();
+    }
 
     public String getBio() {
         return bio;
@@ -254,4 +248,34 @@ public class UserDetails {
         }
         return null;
     }
+
+    public static String getStatus(String userId) {
+        try {
+            // Read the JSON file into a string
+            String content = new String(Files.readAllBytes(new File("users.json").toPath()));
+
+            // Create a JSONArray from the JSON string
+            JSONArray users = new JSONArray(content);
+
+            // Loop through the array of users
+            for (int i = 0; i < users.length(); i++) {
+                JSONObject user = users.getJSONObject(i);
+
+                // Check if the userId matches
+                if (user.getString("id").equals(userId)) {
+                    // Return the status if the userId matches
+                    return user.getString("status");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Offline";  // Default status if the user is not found
+    }
+
+    @Override
+    public String toString() {
+        return "UserDetails{" + "userId=" + userId + ", email=" + email + ", userName=" + userName + ", password=" + password + ", storePassword=" + storePassword + ", dateOfBirth=" + dateOfBirth + ", status=" + status + ", bio=" + bio + ", profilePhoto=" + profilePhoto + ", coverPhoto=" + coverPhoto + ", friends=" + friends + ", posts=" + posts + '}';
+    }
+
 }

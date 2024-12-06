@@ -1,11 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package connect_hub.ProfileManagment;
+
 
 import connect_hub.UserManagement.ReadUsers;
 import connect_hub.UserManagement.UserDetails;
+import connect_hub.UserManagement.PutUsers;
+import connect_hub.UserManagement.ReadUsers;
 
 import java.awt.List;
 import java.io.IOException;
@@ -20,6 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author HP
  */
+
 public class ChangeBioWindow extends javax.swing.JFrame {
 
     public String bio;
@@ -127,33 +127,31 @@ public class ChangeBioWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-               String newBio = jTextField1.getText();
-               if(newBio.isEmpty()){
-                   JOptionPane.showMessageDialog(this, "Please enter your bio!", "Error", 0);
-                   return;
-               }
 
+        String Bio=   jTextField1.getText();
+bio= jTextField1.getText();
+//email=   jTextField2.getText();
+ ArrayList<UserDetails> list=new ArrayList<>();
         try {
-            UpdateBio bio = new UpdateBio();
-            String result = bio.checkBio(newBio, email);
-
-            if (result.equals("success")) {
-                JOptionPane.showMessageDialog(this, "Bio Updated Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                jTextField1.setText("");
-            } else if (result.equals("Errorr")) {
-                JOptionPane.showMessageDialog(this, "Error updating bio.", "Error", JOptionPane.ERROR_MESSAGE);
-            } else if (result.equals("Error")) {
-                JOptionPane.showMessageDialog(this, "Error updating bio..", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-            setVisible(false);
-            EditProfileWindow window=new EditProfileWindow(email);
-            window.setVisible(true);
-
+           
+                    list=ReadUsers.readUsersFromFile("users.json");
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "An error occurred while updating bio. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            Logger.getLogger(ChangeBioWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        UserDetails user=new UserDetails();
+        UpdateBio changeBio=new UpdateBio(list);
+        user=changeBio.getSpecific(email);
+        changeBio.changeBio(Bio,user.getUserId());
+       // updateBio(user.getBio());
+      //  System.out.println(user.getBio());
+         JOptionPane.showMessageDialog(this, "Bio updated successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        try {
+            PutUsers.save(list);
+        } catch (IOException ex) {
             Logger.getLogger(ChangeBioWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -163,36 +161,36 @@ public class ChangeBioWindow extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    /* Set the Nimbus look and feel */
+    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+     */
+    try {
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            if ("Nimbus".equals(info.getName())) {
+                javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                break;
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ChangeBioWindow().setVisible(true);
-            }
-        });
+    } catch (ClassNotFoundException ex) {
+        java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (InstantiationException ex) {
+        java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (IllegalAccessException ex) {
+        java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        java.util.logging.Logger.getLogger(ChangeBioWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
     }
+    //</editor-fold>
+
+    /* Create and display the form */
+    java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+            new ChangeBioWindow().setVisible(true);
+        }
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

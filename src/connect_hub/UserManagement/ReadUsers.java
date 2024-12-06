@@ -54,15 +54,15 @@ public class ReadUsers {
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             String password = jsonObject.getString("password");
-            String profilePhoto = jsonObject.optString("ProfilePhoto", "");
-            String coverPhoto = jsonObject.optString("CoverPhoto");
-            String bio = jsonObject.optString("Bio", "");
+            String profilePhoto = jsonObject.optString("profilePhoto", "");
+            String coverPhoto = jsonObject.optString("coverPhoto");
+            String bio = jsonObject.optString("bio", "");
             String dateOfBirth = jsonObject.getString("dateOfBirth");
             String id = jsonObject.getString("id");
             String userName = jsonObject.getString("userName");
-            ArrayList<Posts> posts = parsePosts(jsonObject.optJSONArray("Posts"));
+            ArrayList<Posts> posts = parsePosts(jsonObject.optJSONArray("posts"));
             String email = jsonObject.getString("email");
-            ArrayList<Friends> friends = parseFriends(jsonObject.optJSONArray("Friends"));
+            ArrayList<Friends> friends = parseFriends(jsonObject.optJSONArray("friends"));
             String status = jsonObject.getString("status");
 
             UserDetails user = new UserDetails(id, email, userName, password, dateOfBirth, status, bio, profilePhoto, coverPhoto, friends, posts);
